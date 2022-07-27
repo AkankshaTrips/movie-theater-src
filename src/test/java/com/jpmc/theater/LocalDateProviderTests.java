@@ -15,10 +15,9 @@ public class LocalDateProviderTests {
     }
 
     @Test
-    void makeSureClassIsSinleton() {
-        //hashcodes are the same for singleton classes
-        LocalDate date1 = LocalDateProvider.singleton().currentDate();
-        LocalDate date2 = LocalDateProvider.singleton().currentDate();
-        assertTrue(date1.hashCode() == date2.hashCode());
+    void makeSureClassIsSingleton() {
+        LocalDateProvider date1 = LocalDateProvider.singleton();
+        LocalDateProvider date2 = LocalDateProvider.singleton();
+        assertTrue(date1 == date2);
     }
 }

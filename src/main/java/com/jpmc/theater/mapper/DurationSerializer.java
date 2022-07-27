@@ -9,6 +9,16 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.jpmc.theater.utils.ReadabilityFormatter;
 
 public class DurationSerializer extends JsonSerializer<Duration> {
+
+    private static DurationSerializer instance = null;
+
+    public static DurationSerializer singleton() {
+        if (instance == null) {
+            instance = new DurationSerializer();
+        }
+        return instance;
+    }
+
     @Override
     public void serialize(Duration duration, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         String durationValue = ReadabilityFormatter.humanReadableFormatForDuration(duration);

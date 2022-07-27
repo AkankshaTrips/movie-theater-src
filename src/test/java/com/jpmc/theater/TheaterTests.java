@@ -50,7 +50,7 @@ public class TheaterTests {
         Theater theater = new Theater(LocalDateProvider.singleton());
         try {
             theater.reserve(null, 6, 3);
-        } catch (IllegalStateException e) {
+        } catch (NullPointerException e) {
             assertEquals("A customer is required to make a reservation.", e.getLocalizedMessage());
         }
     }
@@ -61,7 +61,7 @@ public class TheaterTests {
         Customer john = new Customer("John Doe", "id-12345");
         try {
             theater.reserve(john, 5, 0);
-        } catch (IllegalStateException e) {
+        } catch (IllegalArgumentException e) {
             assertEquals("A ticket is requires to make a reservation.", e.getLocalizedMessage());
         }
     }
@@ -72,7 +72,7 @@ public class TheaterTests {
         Customer john = new Customer("John Doe", "id-12345");
         try {
             theater.reserve(john, 10, 3);
-        } catch (IllegalStateException e) {
+        } catch (IllegalArgumentException e) {
             assertEquals("Not able to find any showing for the given sequence 10", e.getLocalizedMessage());
         }
     }

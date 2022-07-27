@@ -16,8 +16,7 @@ public final class ReadabilityFormatter {
     private static String handlePlural(long value) {
         if (value == 1) {
             return "";
-        }
-        else {
+        } else {
             return "s";
         }
     }
